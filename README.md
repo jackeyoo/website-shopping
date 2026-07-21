@@ -12,3 +12,4 @@
 - `styles.css` งานออกแบบ responsive
 - `script.js` ข้อมูลสินค้า ตะกร้า และ checkout mock
 - `assets/hero-products.png` ภาพ hero สร้างด้วย image generation
+#  test
