@@ -46,6 +46,9 @@
       </form>
 
       <div class="header-actions">
+        <a class="account-chip" data-page-link="account" href="account.html" aria-label="บัญชีผู้ใช้">
+          <span class="user-icon" aria-hidden="true"></span>
+        </a>
         <a class="header-mini-link" href="products.html" aria-label="ค้นหาสินค้า">
           <span class="search-icon" aria-hidden="true"></span>
         </a>
@@ -82,45 +85,106 @@
       <a class="nav-link" data-page-link="deals" href="deals.html"><span>ดีลพิเศษ</span><small>Bundle</small></a>
       <a class="nav-link" data-page-link="cart" href="cart.html"><span>ตะกร้า</span><small>Review</small></a>
       <a class="nav-link" data-page-link="support" href="support.html"><span>บริการ</span><small>Care</small></a>
+      <a class="nav-link" data-page-link="account" href="account.html"><span>บัญชี</span><small>Account</small></a>
       <a class="checkout-mobile" href="checkout.html">ไป Checkout</a>
     </nav>
 
     <main class="page-shell content-page">
+      <nav class="breadcrumb-row" aria-label="Breadcrumb">
+        <a href="index.html">หน้าหลัก</a>
+        <span>/</span>
+        <strong>สินค้าทั้งหมด</strong>
+      </nav>
+
       <section class="page-hero" data-reveal>
         <p class="eyebrow">Products Console</p>
         <h1>เลือกสินค้าแบบมีระบบ</h1>
         <p>ค้นหา กรองหมวด และเรียงราคาจากหน้าเดียว โดยตะกร้าจะซิงก์ข้ามทุกหน้า</p>
       </section>
 
-      <section class="shop-console" data-reveal>
-        <div class="shop-toolbar" aria-label="เครื่องมือค้นหาและกรองสินค้า">
-          <label class="search-box">
-            <span class="search-icon" aria-hidden="true"></span>
-            <input id="searchInput" type="search" placeholder="ค้นหา gadget, audio, charger" autocomplete="off" />
-          </label>
-          <select id="sortSelect" aria-label="เรียงสินค้า">
-            <option value="featured">เรียงตามแนะนำ</option>
-            <option value="price-low">ราคาต่ำไปสูง</option>
-            <option value="price-high">ราคาสูงไปต่ำ</option>
-            <option value="rating">คะแนนสูงสุด</option>
-          </select>
-        </div>
+      <section class="listing-layout" data-reveal>
+        <aside class="filter-sidebar" aria-label="ตัวกรองสินค้า">
+          <div class="filter-head">
+            <strong>Filter</strong>
+            <a href="products.html">ล้างทั้งหมด</a>
+          </div>
 
-        <div class="category-tabs" role="tablist" aria-label="หมวดสินค้า">
-          <button class="category-tab is-active" type="button" data-category="all">ทั้งหมด</button>
-          <button class="category-tab" type="button" data-category="wearable">Wearable</button>
-          <button class="category-tab" type="button" data-category="audio">Audio</button>
-          <button class="category-tab" type="button" data-category="power">Power</button>
-          <button class="category-tab" type="button" data-category="desk">Desk</button>
-          <button class="category-tab" type="button" data-category="smart-home">Smart Home</button>
-        </div>
+          <div class="filter-group">
+            <span>หมวดหมู่</span>
+            <button class="filter-option is-active" type="button" data-filter-category="all">สินค้าทั้งหมด</button>
+            <button class="filter-option" type="button" data-filter-category="desk">อุปกรณ์โต๊ะทำงาน</button>
+            <button class="filter-option" type="button" data-filter-category="audio">หูฟังและลำโพง</button>
+            <button class="filter-option" type="button" data-filter-category="power">ชาร์จและเดินทาง</button>
+            <button class="filter-option" type="button" data-filter-category="wearable">Wearable</button>
+            <button class="filter-option" type="button" data-filter-category="smart-home">Smart Home</button>
+          </div>
 
-        <div class="result-row">
-          <strong id="resultCount">0 รายการ</strong>
-          <span>พร้อมส่งและรองรับการรับประกัน</span>
-        </div>
+          <div class="filter-group">
+            <span>ช่วงราคา</span>
+            <div class="price-range">
+              <i style="width: 68%"></i>
+            </div>
+            <div class="price-range-labels">
+              <strong>฿1,000</strong>
+              <strong>฿7,000</strong>
+            </div>
+          </div>
 
-        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+          <div class="filter-group">
+            <span>แบรนด์</span>
+            <label><input type="checkbox" checked /> Shoplingoo Select</label>
+            <label><input type="checkbox" /> Aura Series</label>
+            <label><input type="checkbox" /> Nova Lab</label>
+          </div>
+
+          <div class="filter-group">
+            <span>สี</span>
+            <div class="swatch-row" aria-label="สีสินค้า">
+              <button type="button" class="swatch swatch-white" aria-label="ขาว"></button>
+              <button type="button" class="swatch swatch-black" aria-label="ดำ"></button>
+              <button type="button" class="swatch swatch-green" aria-label="เขียว"></button>
+              <button type="button" class="swatch swatch-blue" aria-label="น้ำเงิน"></button>
+            </div>
+          </div>
+        </aside>
+
+        <div class="shop-console">
+          <div class="shop-toolbar" aria-label="เครื่องมือค้นหาและกรองสินค้า">
+            <label class="search-box">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input id="searchInput" type="search" placeholder="ค้นหา gadget, audio, charger" autocomplete="off" />
+            </label>
+            <select id="sortSelect" aria-label="เรียงสินค้า">
+              <option value="featured">เรียงตามความนิยม</option>
+              <option value="price-low">ราคาต่ำไปสูง</option>
+              <option value="price-high">ราคาสูงไปต่ำ</option>
+              <option value="rating">สินค้าใหม่ / คะแนนสูง</option>
+            </select>
+          </div>
+
+          <div class="category-tabs" role="tablist" aria-label="หมวดสินค้า">
+            <button class="category-tab is-active" type="button" data-category="all">ทั้งหมด</button>
+            <button class="category-tab" type="button" data-category="wearable">Wearable</button>
+            <button class="category-tab" type="button" data-category="audio">Audio</button>
+            <button class="category-tab" type="button" data-category="power">Power</button>
+            <button class="category-tab" type="button" data-category="desk">Desk</button>
+            <button class="category-tab" type="button" data-category="smart-home">Smart Home</button>
+          </div>
+
+          <div class="result-row">
+            <strong id="resultCount">0 รายการ</strong>
+            <span>พร้อมส่ง รับประกันศูนย์ และเลือกดูรายละเอียดสินค้าได้ทุกชิ้น</span>
+          </div>
+
+          <div class="product-grid" id="productGrid" aria-live="polite"></div>
+          <nav class="pagination-row" aria-label="เลขหน้า">
+            <a href="products.html" aria-label="หน้าก่อนหน้า">‹</a>
+            <a class="is-active" href="products.html">1</a>
+            <a href="products.html?page=2">2</a>
+            <a href="products.html?page=3">3</a>
+            <a href="products.html?page=2" aria-label="หน้าถัดไป">›</a>
+          </nav>
+        </div>
       </section>
     </main>
 

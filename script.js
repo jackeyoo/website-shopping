@@ -85,7 +85,7 @@ const products = [
   },
   {
     id: "lumen-keyboard",
-    image: "https://images.pexels.com/photos/671629/pexels-photo-671629.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/32313567/pexels-photo-32313567.jpeg?auto=compress&cs=tinysrgb&w=1200",
     name: "Lumen Keyboard",
     category: "desk",
     price: 2990,
@@ -154,6 +154,26 @@ const categoryLabels = {
   desk: "Desk",
   "smart-home": "Smart Home",
 };
+
+const detailSpecRows = [
+  ["วัสดุ", "Aluminum frame + recycled ABS keycaps"],
+  ["การเชื่อมต่อ", "Bluetooth 5.3 และ USB-C"],
+  ["แบตเตอรี่", "ใช้งานสูงสุด 50 ชั่วโมงต่อชาร์จ"],
+  ["การรับประกัน", "ศูนย์ไทย 12 เดือน"],
+];
+
+const detailReviews = [
+  {
+    name: "Krit",
+    time: "4 hours ago",
+    text: "สัมผัสแน่น เสียงพิมพ์นุ่ม และเข้ากับโต๊ะทำงานสีขาวมาก",
+  },
+  {
+    name: "Mild",
+    time: "3 hours ago",
+    text: "แพ็กมาดี กดซื้อจากมือถือแล้วตามสถานะในบัญชีได้สะดวก",
+  },
+];
 
 const storageKey = "sabaai-tech-cart";
 const promoKey = "sabaai-tech-promo";
@@ -238,17 +258,18 @@ function setActiveNav() {
 }
 
 function renderProductCard(product) {
+  const detailUrl = `product-detail.html?id=${encodeURIComponent(product.id)}`;
   return `
     <article class="product-card" data-item-card>
-      <div class="product-art">
+      <a class="product-art product-link" href="${detailUrl}" aria-label="ดูรายละเอียด ${product.name}">
         <img class="product-photo" src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" />
-      </div>
+      </a>
       <div class="product-info">
         <div class="product-meta">
           <span class="badge">${product.badge}</span>
           <span>${product.rating.toFixed(1)} (${product.reviews})</span>
         </div>
-        <h3>${product.name}</h3>
+        <h3><a href="${detailUrl}">${product.name}</a></h3>
         <p>${product.description}</p>
         <div class="card-footer">
           <span class="price-stack">
@@ -309,6 +330,175 @@ function renderProducts() {
   grid.innerHTML = filtered.map(renderProductCard).join("");
 }
 
+function getProductDetailImages(product) {
+  return [
+    {
+      src: product.image,
+      alt: product.name,
+    },
+    {
+      src: "https://images.pexels.com/photos/32313567/pexels-photo-32313567.jpeg?auto=compress&cs=tinysrgb&w=900",
+      alt: `${product.name} top view`,
+    },
+    {
+      src: "https://images.pexels.com/photos/4386357/pexels-photo-4386357.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: `${product.name} setup detail`,
+    },
+    {
+      src: "https://images.pexels.com/photos/17479952/pexels-photo-17479952.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: `${product.name} desk setup`,
+    },
+  ];
+}
+
+function getRelatedProducts(product) {
+  const sameCategory = products.filter((item) => item.id !== product.id && item.category === product.category);
+  const fallback = products.filter((item) => item.id !== product.id && item.category !== product.category);
+  return [...sameCategory, ...fallback].slice(0, 3);
+}
+
+function renderRelatedCard(product) {
+  return `
+    <a class="related-card" href="product-detail.html?id=${encodeURIComponent(product.id)}">
+      <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" />
+      <span>${product.badge}</span>
+      <strong>${product.name}</strong>
+      <small>${money.format(product.price)}</small>
+    </a>
+  `;
+}
+
+function renderProductDetail() {
+  const target = document.querySelector("#productDetail");
+  if (!target) return;
+
+  const requestedId = pageParams.get("id") || "lumen-keyboard";
+  const product = products.find((item) => item.id === requestedId) || products.find((item) => item.id === "lumen-keyboard") || products[0];
+  const images = getProductDetailImages(product);
+  const discount = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
+  const related = getRelatedProducts(product);
+
+  target.innerHTML = `
+    <nav class="breadcrumb-row" aria-label="Breadcrumb">
+      <a href="index.html">หน้าหลัก</a>
+      <span>/</span>
+      <a href="products.html">สินค้า</a>
+      <span>/</span>
+      <strong>${product.name}</strong>
+    </nav>
+
+    <section class="product-detail-layout" data-reveal>
+      <div class="detail-gallery">
+        <div class="thumb-list" aria-label="รูปสินค้า">
+          ${images
+            .map(
+              (image, index) => `
+                <button class="thumb-button ${index === 0 ? "is-active" : ""}" type="button" data-detail-image="${image.src}" data-detail-alt="${image.alt}" aria-label="ดูรูป ${index + 1}">
+                  <img src="${image.src}" alt="" loading="lazy" decoding="async" />
+                </button>
+              `,
+            )
+            .join("")}
+        </div>
+        <div class="detail-main-image">
+          <img id="detailMainImage" src="${images[0].src}" alt="${images[0].alt}" />
+        </div>
+      </div>
+
+      <aside class="detail-info">
+        <span class="badge detail-badge">${product.badge}</span>
+        <h1>${product.name}</h1>
+        <div class="rating-row">
+          <span class="stars">★★★★★</span>
+          <strong>${product.rating.toFixed(1)}</strong>
+          <span>(${product.reviews} รีวิว)</span>
+        </div>
+        <ul class="detail-bullets">
+          <li>สวิตช์เงียบ ตอบสนองไว เหมาะกับงานทุกวัน</li>
+          <li>เชื่อมต่อหลายอุปกรณ์และสลับโหมดได้ทันที</li>
+          <li>แพ็กพร้อมส่งจากร้าน พร้อมรับประกันศูนย์ไทย</li>
+        </ul>
+
+        <div class="detail-stat-grid" aria-label="จุดเด่นสินค้า">
+          <div><span>Battery</span><strong>50 ชม.</strong></div>
+          <div><span>Connection</span><strong>BT + Dongle</strong></div>
+          <div><span>Switch</span><strong>Linear/Tactile</strong></div>
+        </div>
+
+        <div class="detail-price-row">
+          <div>
+            <span>ราคาพิเศษ</span>
+            <strong>${money.format(product.price)}</strong>
+            <del>${money.format(product.oldPrice)}</del>
+          </div>
+          <span class="stock-dot">${product.stock}</span>
+        </div>
+        <span class="discount-chip">ลด ${discount}%</span>
+
+        <div class="choice-block">
+          <span>สีสินค้า</span>
+          <div class="choice-row">
+            <button class="option-pill is-active" type="button" data-detail-option>cherry MX dark</button>
+            <button class="option-pill" type="button" data-detail-option>cherry MX lite</button>
+            <button class="option-pill" type="button" data-detail-option>soft grey</button>
+          </div>
+        </div>
+
+        <div class="choice-block">
+          <span>ขนาด</span>
+          <div class="choice-row">
+            <button class="option-pill is-active" type="button" data-detail-option>65 layout</button>
+            <button class="option-pill" type="button" data-detail-option>full layout</button>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <button class="ghost-button detail-cart-button" type="button" data-add="${product.id}">เพิ่มลงตะกร้า</button>
+          <button class="add-button detail-buy-button" type="button" data-buy-now="${product.id}">ซื้อเลย</button>
+        </div>
+        <a class="compare-link" href="products.html?q=${encodeURIComponent(product.name)}">Compare</a>
+      </aside>
+    </section>
+
+    <section class="detail-lower-grid" data-reveal>
+      <article class="spec-panel">
+        <h2>Specifications</h2>
+        <dl>
+          ${detailSpecRows.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("")}
+        </dl>
+      </article>
+
+      <article class="spec-panel">
+        <div class="panel-title-row">
+          <h2>Customer Reviews</h2>
+          <a href="support.html">ดูทั้งหมด</a>
+        </div>
+        <div class="detail-review-list">
+          ${detailReviews
+            .map(
+              (review) => `
+                <div>
+                  <span class="stars">★★★★★</span>
+                  <p>${review.text}</p>
+                  <small>${review.name} · ${review.time}</small>
+                </div>
+              `,
+            )
+            .join("")}
+        </div>
+      </article>
+
+      <article class="spec-panel related-section">
+        <div class="panel-title-row">
+          <h2>Related Products ${related.length}</h2>
+          <a href="products.html?category=${product.category}">ดูหมวดนี้</a>
+        </div>
+        <div class="related-grid">${related.map(renderRelatedCard).join("")}</div>
+      </article>
+    </section>
+  `;
+}
+
 function renderDeals() {
   const target = document.querySelector("#dealGrid");
   if (!target) return;
@@ -364,6 +554,9 @@ function renderCartLines(target, options = {}) {
     .map(
       (item) => `
         <div class="cart-line">
+          <a class="cart-line-media" href="${item.kind === "product" ? `product-detail.html?id=${encodeURIComponent(item.id)}` : "deals.html"}" aria-label="ดู ${item.name}">
+            <img src="${item.image || products.find((product) => product.id === item.itemIds?.[0])?.image || "assets/hero-products.png"}" alt="${item.name}" loading="lazy" decoding="async" />
+          </a>
           <div>
             <h3>${item.name}</h3>
             <p>${money.format(item.price)} × ${item.quantity} ${item.kind === "deal" ? "ชุด" : "ชิ้น"}</p>
@@ -405,10 +598,62 @@ function renderCheckoutPage() {
   if (button) button.disabled = getCartLines().length === 0;
 }
 
+function renderAccountPage() {
+  const currentOrder = document.querySelector("#accountCurrentOrder");
+  const wishlist = document.querySelector("#accountWishlist");
+  if (!currentOrder && !wishlist) return;
+
+  const lines = getCartLines();
+  const orderLines = lines.length
+    ? lines
+    : [
+        { ...products.find((product) => product.id === "lumen-keyboard"), quantity: 1 },
+        { ...products.find((product) => product.id === "nova-buds-air"), quantity: 1 },
+      ].filter((item) => item.id);
+  const orderTotal = orderLines.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  if (currentOrder) {
+    currentOrder.innerHTML = `
+      <div class="order-head">
+        <div>
+          <span class="badge">กำลังจัดส่ง</span>
+          <h2>Order #SLG-240721</h2>
+          <p>Tracking: THP845201739 · ถึงโดยประมาณ 23 ก.ค.</p>
+        </div>
+        <strong>${money.format(orderTotal)}</strong>
+      </div>
+      <div class="status-track" aria-label="สถานะคำสั่งซื้อ">
+        <span class="is-done">สั่งซื้อ</span>
+        <span class="is-done">ชำระเงิน</span>
+        <span class="is-current">กำลังจัดส่ง</span>
+        <span>สำเร็จ</span>
+      </div>
+      <div class="account-order-items">
+        ${orderLines
+          .map(
+            (item) => `
+              <div>
+                <img src="${item.image}" alt="${item.name}" loading="lazy" decoding="async" />
+                <span>${item.name}</span>
+                <strong>× ${item.quantity}</strong>
+              </div>
+            `,
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
+  if (wishlist) {
+    wishlist.innerHTML = products.slice(0, 4).map(renderRelatedCard).join("");
+  }
+}
+
 function rerenderCartSurfaces() {
   updateCartCount();
   renderCartPage();
   renderCheckoutPage();
+  renderAccountPage();
 }
 
 function addToCart(itemId, button) {
@@ -492,13 +737,15 @@ function bindProductControls() {
     });
   }
 
-  document.querySelectorAll(".category-tab").forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.category === state.activeCategory);
+  document.querySelectorAll(".category-tab, [data-filter-category]").forEach((button) => {
+    const category = button.dataset.category || button.dataset.filterCategory;
+    button.classList.toggle("is-active", category === state.activeCategory);
     button.addEventListener("click", () => {
-      state.activeCategory = button.dataset.category;
-      document
-        .querySelectorAll(".category-tab")
-        .forEach((tab) => tab.classList.toggle("is-active", tab.dataset.category === state.activeCategory));
+      state.activeCategory = category;
+      document.querySelectorAll(".category-tab, [data-filter-category]").forEach((tab) => {
+        const tabCategory = tab.dataset.category || tab.dataset.filterCategory;
+        tab.classList.toggle("is-active", tabCategory === state.activeCategory);
+      });
       renderProducts();
     });
   });
@@ -531,11 +778,39 @@ function bindHeaderSearch() {
 
 function bindCartControls() {
   document.addEventListener("click", (event) => {
+    const thumb = event.target.closest("[data-detail-image]");
+    const option = event.target.closest("[data-detail-option]");
+    const buyNow = event.target.closest("[data-buy-now]");
     const add = event.target.closest("[data-add]");
     const inc = event.target.closest("[data-inc]");
     const dec = event.target.closest("[data-dec]");
     const remove = event.target.closest("[data-remove]");
     const disabledCheckout = event.target.closest(".checkout-button.is-disabled");
+
+    if (thumb) {
+      const mainImage = document.querySelector("#detailMainImage");
+      if (mainImage) {
+        mainImage.src = thumb.dataset.detailImage;
+        mainImage.alt = thumb.dataset.detailAlt || "";
+      }
+      thumb.parentElement?.querySelectorAll("[data-detail-image]").forEach((button) => {
+        button.classList.toggle("is-active", button === thumb);
+      });
+      return;
+    }
+
+    if (option) {
+      option.parentElement?.querySelectorAll("[data-detail-option]").forEach((button) => {
+        button.classList.toggle("is-active", button === option);
+      });
+      return;
+    }
+
+    if (buyNow) {
+      addToCart(buyNow.dataset.buyNow, buyNow);
+      window.location.href = "checkout.html";
+      return;
+    }
 
     if (add) {
       addToCart(add.dataset.add, add);
@@ -675,6 +950,7 @@ bindPromo();
 bindCheckout();
 renderFeatured();
 renderProducts();
+renderProductDetail();
 renderDeals();
 rerenderCartSurfaces();
 initReveal();

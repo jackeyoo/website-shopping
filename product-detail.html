@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ดีล bundle สินค้า Premium Tech สำหรับโต๊ะทำงาน เดินทาง และ smart home" />
-    <title>ดีลพิเศษ | สบายมาร์เก็ต</title>
+    <meta
+      name="description"
+      content="รายละเอียดสินค้า Shoplingoo พร้อมแกลเลอรีสินค้า ตัวเลือกสินค้า รีวิว และสินค้าที่เกี่ยวข้อง"
+    />
+    <title>รายละเอียดสินค้า | Shoplingoo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,16 +16,9 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body data-page="deals">
-    <div class="announcement">
-      <span class="announcement-pill">Tech Week</span>
-      <span>ส่งฟรีเมื่อครบ ฿2,500</span>
-      <span>รับประกันศูนย์สูงสุด 12 เดือน</span>
-      <a href="deals.html">ดูดีลวันนี้</a>
-    </div>
-
+  <body data-page="products">
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="สบายมาร์เก็ต">
+      <a class="brand" href="index.html" aria-label="Shoplingoo">
         <span class="brand-mark" aria-hidden="true"><span>SM</span></span>
         <span class="brand-copy">
           <strong>Shoplingoo</strong>
@@ -32,13 +28,7 @@
 
       <form class="header-search" id="siteSearchForm" action="products.html" role="search">
         <span class="search-icon" aria-hidden="true"></span>
-        <input
-          id="siteSearch"
-          name="q"
-          type="search"
-          placeholder="ค้นหา watch, keyboard, charger"
-          autocomplete="off"
-        />
+        <input id="siteSearch" name="q" type="search" placeholder="ค้นหา watch, keyboard, charger" autocomplete="off" />
         <button type="submit">ค้นหา</button>
       </form>
 
@@ -86,24 +76,7 @@
       <a class="checkout-mobile" href="checkout.html">ไป Checkout</a>
     </nav>
 
-    <main class="page-shell content-page">
-      <section class="page-hero deal-hero" data-reveal>
-        <p class="eyebrow">Bundle Drops</p>
-        <h1>ดีลจัดชุดให้คุ้มกว่าเลือกทีละชิ้น</h1>
-        <p>รวมสินค้าเข้าชุดตามการใช้งานจริง พร้อมโปรโมชัน `WELCOME10` สำหรับลดเพิ่มในตะกร้า</p>
-      </section>
-
-      <section class="deal-grid" id="dealGrid" aria-live="polite" data-reveal></section>
-
-      <section class="promo-panel" data-reveal>
-        <div>
-          <p class="eyebrow">Promo Code</p>
-          <h2>WELCOME10</h2>
-          <p>ใช้ได้ในหน้าตะกร้า ลด 10% จากค่าสินค้า ก่อนคำนวณค่าส่ง</p>
-        </div>
-        <a class="primary-link" href="cart.html">ไปตะกร้า</a>
-      </section>
-    </main>
+    <main class="page-shell product-detail-page" id="productDetail"></main>
 
     <footer class="site-footer">
       <div>
@@ -117,9 +90,9 @@
         <a href="cart.html">ตรวจตะกร้า</a>
       </div>
       <div>
-        <strong>นโยบายร้านค้า</strong>
+        <strong>บัญชีและนโยบาย</strong>
+        <a href="account.html">บัญชีผู้ใช้</a>
         <a href="checkout.html">การจัดส่ง</a>
-        <a href="support.html">การรับประกัน</a>
       </div>
       <div class="footer-social">
         <strong>ติดตามเรา</strong>
