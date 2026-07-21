@@ -255,7 +255,10 @@ function renderProductCard(product) {
             <strong>${money.format(product.price)}</strong>
             <span>${money.format(product.oldPrice)}</span>
           </span>
-          <button class="add-button" type="button" data-add="${product.id}">เพิ่ม</button>
+          <span class="card-actions">
+            <button class="add-button" type="button" data-add="${product.id}">Add to Cart</button>
+            <a class="compare-button" href="products.html?q=${encodeURIComponent(product.name)}">Compare</a>
+          </span>
         </div>
       </div>
     </article>
@@ -266,7 +269,7 @@ function renderFeatured() {
   const target = document.querySelector("#featuredGrid");
   if (!target) return;
 
-  target.innerHTML = products.slice(0, 4).map(renderProductCard).join("");
+  target.innerHTML = products.slice(0, 6).map(renderProductCard).join("");
 }
 
 function getFilteredProducts() {
