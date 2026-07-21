@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ดีล bundle สินค้า Premium Tech สำหรับโต๊ะทำงาน เดินทาง และ smart home" />
+    <title>ดีลพิเศษ | สบายมาร์เก็ต</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="deals">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="สบายมาร์เก็ต">
+        <span class="brand-mark" aria-hidden="true">SM</span>
+        <span class="brand-copy"><strong>สบายมาร์เก็ต</strong><small>Premium Tech</small></span>
+      </a>
+      <nav class="top-nav" aria-label="เมนูหลัก">
+        <a class="nav-link" data-page-link="home" href="index.html">หน้าแรก</a>
+        <a class="nav-link" data-page-link="products" href="products.html">สินค้า</a>
+        <a class="nav-link" data-page-link="deals" href="deals.html">ดีลพิเศษ</a>
+        <a class="nav-link" data-page-link="support" href="support.html">บริการ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="cart-chip" href="cart.html" aria-label="เปิดตะกร้าสินค้า">
+          <span class="bag-icon" aria-hidden="true"></span>
+          <strong id="cartCount">0</strong>
+        </a>
+        <a class="checkout-chip" href="checkout.html">Checkout</a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="เปิดเมนู"><span></span><span></span></button>
+      </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="เมนูมือถือ">
+      <a class="nav-link" data-page-link="home" href="index.html">หน้าแรก</a>
+      <a class="nav-link" data-page-link="products" href="products.html">สินค้า</a>
+      <a class="nav-link" data-page-link="deals" href="deals.html">ดีลพิเศษ</a>
+      <a class="nav-link" data-page-link="cart" href="cart.html">ตะกร้า</a>
+      <a class="nav-link" data-page-link="support" href="support.html">บริการ</a>
+    </nav>
+
+    <main class="page-shell content-page">
+      <section class="page-hero deal-hero" data-reveal>
+        <p class="eyebrow">Bundle Drops</p>
+        <h1>ดีลจัดชุดให้คุ้มกว่าเลือกทีละชิ้น</h1>
+        <p>รวมสินค้าเข้าชุดตามการใช้งานจริง พร้อมโปรโมชัน `WELCOME10` สำหรับลดเพิ่มในตะกร้า</p>
+      </section>
+
+      <section class="deal-grid" id="dealGrid" aria-live="polite" data-reveal></section>
+
+      <section class="promo-panel" data-reveal>
+        <div>
+          <p class="eyebrow">Promo Code</p>
+          <h2>WELCOME10</h2>
+          <p>ใช้ได้ในหน้าตะกร้า ลด 10% จากค่าสินค้า ก่อนคำนวณค่าส่ง</p>
+        </div>
+        <a class="primary-link" href="cart.html">ไปตะกร้า</a>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ตรวจรายการสินค้าในตะกร้า ปรับจำนวน ใช้โค้ดส่วนลด และไป checkout" />
+    <title>ตะกร้า | สบายมาร์เก็ต</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="cart">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="สบายมาร์เก็ต">
+        <span class="brand-mark" aria-hidden="true">SM</span>
+        <span class="brand-copy"><strong>สบายมาร์เก็ต</strong><small>Premium Tech</small></span>
+      </a>
+      <nav class="top-nav" aria-label="เมนูหลัก">
+        <a class="nav-link" data-page-link="home" href="index.html">หน้าแรก</a>
+        <a class="nav-link" data-page-link="products" href="products.html">สินค้า</a>
+        <a class="nav-link" data-page-link="deals" href="deals.html">ดีลพิเศษ</a>
+        <a class="nav-link" data-page-link="support" href="support.html">บริการ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="cart-chip" href="cart.html" aria-label="เปิดตะกร้าสินค้า">
+          <span class="bag-icon" aria-hidden="true"></span>
+          <strong id="cartCount">0</strong>
+        </a>
+        <a class="checkout-chip" href="checkout.html">Checkout</a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="เปิดเมนู"><span></span><span></span></button>
+      </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="เมนูมือถือ">
+      <a class="nav-link" data-page-link="home" href="index.html">หน้าแรก</a>
+      <a class="nav-link" data-page-link="products" href="products.html">สินค้า</a>
+      <a class="nav-link" data-page-link="deals" href="deals.html">ดีลพิเศษ</a>
+      <a class="nav-link" data-page-link="cart" href="cart.html">ตะกร้า</a>
+      <a class="nav-link" data-page-link="support" href="support.html">บริการ</a>
+    </nav>
+
+    <main class="page-shell content-page">
+      <section class="page-hero" data-reveal>
+        <p class="eyebrow">Cart Review</p>
+        <h1>ตรวจรายการก่อนสั่งซื้อ</h1>
+        <p>ปรับจำนวนสินค้า ใส่โค้ดส่วนลด และตรวจยอดรวมก่อนย้ายไปหน้า checkout</p>
+      </section>
+
+      <section class="cart-page-grid" data-reveal>
+        <div class="cart-list-card">
+          <div class="card-title-row">
+            <h2>รายการในตะกร้า</h2>
+            <a class="text-link" href="products.html">เลือกเพิ่ม</a>
+          </div>
+          <div class="cart-items-page" id="cartItemsPage"></div>
+        </div>
+
+        <aside class="summary-card">
+          <form class="promo-row" id="promoForm">
+            <label for="promoCode">โค้ดส่วนลด</label>
+            <div>
+              <input id="promoCode" type="text" placeholder="WELCOME10" autocomplete="off" />
+              <button type="submit">ใช้โค้ด</button>
+            </div>
+          </form>
+          <div class="cart-summary" id="cartSummary"></div>
+          <a class="checkout-button" id="checkoutLink" href="checkout.html">ไป Checkout</a>
+        </aside>
+      </section>
+
+      <section class="product-section" data-reveal>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Add-on Picks</p>
+            <h2>สินค้าที่เข้าชุดกัน</h2>
+          </div>
+        </div>
+        <div class="product-grid compact-grid" id="cartRecommendations" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
