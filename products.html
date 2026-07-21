@@ -18,38 +18,69 @@
   </head>
   <body data-page="products">
     <div class="announcement">
+      <span class="announcement-pill">Tech Week</span>
       <span>ส่งฟรีเมื่อครบ ฿2,500</span>
       <span>รับประกันศูนย์สูงสุด 12 เดือน</span>
-      <span>โค้ด WELCOME10 ลดเพิ่ม 10%</span>
+      <a href="deals.html">ดูดีลวันนี้</a>
     </div>
 
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="สบายมาร์เก็ต">
-        <span class="brand-mark" aria-hidden="true">SM</span>
-        <span class="brand-copy"><strong>สบายมาร์เก็ต</strong><small>Premium Tech</small></span>
+        <span class="brand-mark" aria-hidden="true"><span>SM</span></span>
+        <span class="brand-copy">
+          <strong>สบายมาร์เก็ต</strong>
+          <small>Curated Premium Tech</small>
+        </span>
       </a>
-      <nav class="top-nav" aria-label="เมนูหลัก">
-        <a class="nav-link" data-page-link="home" href="index.html">หน้าแรก</a>
-        <a class="nav-link" data-page-link="products" href="products.html">สินค้า</a>
-        <a class="nav-link" data-page-link="deals" href="deals.html">ดีลพิเศษ</a>
-        <a class="nav-link" data-page-link="support" href="support.html">บริการ</a>
-      </nav>
+
+      <form class="header-search" id="siteSearchForm" action="products.html" role="search">
+        <span class="search-icon" aria-hidden="true"></span>
+        <input
+          id="siteSearch"
+          name="q"
+          type="search"
+          placeholder="ค้นหา watch, keyboard, charger"
+          autocomplete="off"
+        />
+        <button type="submit">ค้นหา</button>
+      </form>
+
       <div class="header-actions">
+        <a class="header-mini-link" href="support.html">บริการ</a>
         <a class="cart-chip" href="cart.html" aria-label="เปิดตะกร้าสินค้า">
           <span class="bag-icon" aria-hidden="true"></span>
+          <span class="cart-label">ตะกร้า</span>
           <strong id="cartCount">0</strong>
         </a>
         <a class="checkout-chip" href="checkout.html">Checkout</a>
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="เปิดเมนู"><span></span><span></span></button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="เปิดเมนู">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
+
+      <nav class="top-nav" aria-label="เมนูหลัก">
+        <a class="nav-link" data-page-link="home" href="index.html"><span>หน้าแรก</span><small>Home</small></a>
+        <a class="nav-link" data-page-link="products" href="products.html"><span>สินค้า</span><small>Shop</small></a>
+        <a class="nav-link" data-page-link="deals" href="deals.html"><span>ดีลพิเศษ</span><small>Bundle</small></a>
+        <a class="nav-link" data-page-link="cart" href="cart.html"><span>ตะกร้า</span><small>Review</small></a>
+        <a class="nav-link" data-page-link="support" href="support.html"><span>บริการ</span><small>Care</small></a>
+      </nav>
     </header>
 
     <nav class="mobile-nav" id="mobileNav" aria-label="เมนูมือถือ">
-      <a class="nav-link" data-page-link="home" href="index.html">หน้าแรก</a>
-      <a class="nav-link" data-page-link="products" href="products.html">สินค้า</a>
-      <a class="nav-link" data-page-link="deals" href="deals.html">ดีลพิเศษ</a>
-      <a class="nav-link" data-page-link="cart" href="cart.html">ตะกร้า</a>
-      <a class="nav-link" data-page-link="support" href="support.html">บริการ</a>
+      <form class="mobile-search" id="mobileSiteSearchForm" action="products.html" role="search">
+        <span class="search-icon" aria-hidden="true"></span>
+        <input name="q" type="search" placeholder="ค้นหาสินค้า" autocomplete="off" />
+        <button type="submit">ค้นหา</button>
+      </form>
+      <a class="nav-link" data-page-link="home" href="index.html"><span>หน้าแรก</span><small>Home</small></a>
+      <a class="nav-link" data-page-link="products" href="products.html"><span>สินค้า</span><small>Shop</small></a>
+      <a class="nav-link" data-page-link="deals" href="deals.html"><span>ดีลพิเศษ</span><small>Bundle</small></a>
+      <a class="nav-link" data-page-link="cart" href="cart.html"><span>ตะกร้า</span><small>Review</small></a>
+      <a class="nav-link" data-page-link="support" href="support.html"><span>บริการ</span><small>Care</small></a>
+      <a class="checkout-mobile" href="checkout.html">ไป Checkout</a>
     </nav>
 
     <main class="page-shell content-page">

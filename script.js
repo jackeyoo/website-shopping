@@ -158,10 +158,11 @@ const categoryLabels = {
 const storageKey = "sabaai-tech-cart";
 const promoKey = "sabaai-tech-promo";
 const pageName = document.body.dataset.page || "home";
+const pageParams = new URLSearchParams(window.location.search);
 
 const state = {
-  activeCategory: new URLSearchParams(window.location.search).get("category") || "all",
-  query: "",
+  activeCategory: pageParams.get("category") || "all",
+  query: pageParams.get("q") || "",
   sort: "featured",
   cart: loadCart(),
   promoApplied: window.localStorage.getItem(promoKey) === "WELCOME10",
@@ -474,6 +475,7 @@ function bindProductControls() {
   const sortSelect = document.querySelector("#sortSelect");
 
   if (searchInput) {
+    searchInput.value = state.query;
     searchInput.addEventListener("input", () => {
       state.query = searchInput.value;
       renderProducts();
@@ -495,6 +497,31 @@ function bindProductControls() {
         .querySelectorAll(".category-tab")
         .forEach((tab) => tab.classList.toggle("is-active", tab.dataset.category === state.activeCategory));
       renderProducts();
+    });
+  });
+}
+
+function bindHeaderSearch() {
+  document.querySelectorAll(".header-search, .mobile-search").forEach((form) => {
+    const input = form.querySelector('input[name="q"]');
+    if (!input) return;
+
+    input.value = state.query;
+
+    const goToSearch = () => {
+      const query = input.value.trim();
+      window.location.href = query ? `products.html?q=${encodeURIComponent(query)}` : "products.html";
+    };
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      goToSearch();
+    });
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") return;
+      event.preventDefault();
+      goToSearch();
     });
   });
 }
@@ -597,12 +624,18 @@ function bindMobileMenu() {
   const toggle = document.querySelector("#menuToggle");
   if (!toggle) return;
 
+  toggle.setAttribute("aria-expanded", "false");
+
   toggle.addEventListener("click", () => {
-    document.body.classList.toggle("nav-open");
+    const isOpen = document.body.classList.toggle("nav-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
   });
 
   document.querySelectorAll(".mobile-nav a").forEach((link) => {
-    link.addEventListener("click", () => document.body.classList.remove("nav-open"));
+    link.addEventListener("click", () => {
+      document.body.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
   });
 }
 
@@ -631,6 +664,7 @@ function initReveal() {
 }
 
 setActiveNav();
+bindHeaderSearch();
 bindMobileMenu();
 bindProductControls();
 bindCartControls();
