@@ -2043,7 +2043,7 @@ body::after {
 
 /* Reference screenshot theme: no outer frame, only the website content. */
 :root {
-  --shop-width: 860px;
+  --shop-width: 100%;
   --shop-pad: clamp(18px, 5vw, 52px);
 }
 
