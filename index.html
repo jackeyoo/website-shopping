@@ -55,14 +55,29 @@
     </nav>
 
     <main class="page-shell">
-      <section class="hero-scene" data-reveal>
+      <section class="hero-scene" data-reveal data-hero-stage>
         <img
           class="hero-image"
+          data-depth="8"
           src="assets/hero-products.png"
           alt="สินค้าไลฟ์สไตล์และแกดเจ็ตจัดวางบนโต๊ะ"
         />
         <div class="hero-veil" aria-hidden="true"></div>
-        <div class="hero-content">
+
+        <div class="hero-float hero-float-1" data-depth="46" aria-hidden="true">
+          <img src="https://images.pexels.com/photos/5081914/pexels-photo-5081914.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" loading="lazy" />
+          <span>Aura Watch Pro</span>
+        </div>
+        <div class="hero-float hero-float-2" data-depth="65" aria-hidden="true">
+          <img src="https://images.pexels.com/photos/8380433/pexels-photo-8380433.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" loading="lazy" />
+          <span>Nova Buds Air</span>
+        </div>
+        <div class="hero-float hero-float-3" data-depth="34" aria-hidden="true">
+          <img src="https://images.pexels.com/photos/1024697/pexels-photo-1024697.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" loading="lazy" />
+          <span>Home Hub Mini</span>
+        </div>
+
+        <div class="hero-content" data-depth="14">
           <p class="eyebrow">Premium Tech / Ready to Ship</p>
           <h1>อัปเกรดโต๊ะทำงาน บ้าน และวันเดินทางให้ลื่นกว่าเดิม</h1>
           <p>
@@ -73,7 +88,7 @@
             <a class="secondary-link" href="deals.html">ดูดีล bundle</a>
           </div>
         </div>
-        <div class="hero-dashboard" aria-label="สถานะร้าน">
+        <div class="hero-dashboard" data-depth="20" aria-label="สถานะร้าน">
           <div>
             <span>ส่งฟรี</span>
             <strong>฿2,500+</strong>
@@ -86,6 +101,20 @@
             <span>ตอบกลับ</span>
             <strong>24 ชม.</strong>
           </div>
+        </div>
+      </section>
+
+      <section class="orbit-section" aria-label="สินค้าขายดีแบบหมุน 3 มิติ" data-reveal>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Spin The Shelf</p>
+            <h2>ลากหมุนดูสินค้าขายดีรอบร้าน</h2>
+          </div>
+          <p class="orbit-hint">ลาก หรือ วางเมาส์ค้างเพื่อหยุดหมุน</p>
+        </div>
+        <div class="orbit-stage" id="orbitStage">
+          <ul class="orbit-ring" id="orbitRing"></ul>
+          <div class="orbit-floor" aria-hidden="true"></div>
         </div>
       </section>
 
