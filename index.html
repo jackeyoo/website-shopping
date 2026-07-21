@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="สบายมาร์เก็ต ร้านสินค้าออนไลน์พร้อมตะกร้าและแบบฟอร์มสั่งซื้อ"
+    />
+    <title>สบายมาร์เก็ต | ร้านสินค้าออนไลน์</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#shop" aria-label="สบายมาร์เก็ต">
+        <span class="brand-mark">SM</span>
+        <span class="brand-text">สบายมาร์เก็ต</span>
+      </a>
+
+      <nav class="top-nav" aria-label="เมนูหลัก">
+        <a href="#shop">สินค้า</a>
+        <a href="#checkout">สั่งซื้อ</a>
+        <a href="#support">บริการ</a>
+      </nav>
+
+      <button class="cart-toggle" id="cartToggle" type="button" aria-label="เปิดตะกร้าสินค้า">
+        <span class="cart-glyph" aria-hidden="true"></span>
+        <span>ตะกร้า</span>
+        <strong id="cartCount">0</strong>
+      </button>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero" aria-labelledby="heroTitle">
+        <img
+          class="hero-image"
+          src="assets/hero-products.png"
+          alt="ชุดสินค้าไลฟ์สไตล์และสุขภาพบนโต๊ะสตูดิโอ"
+        />
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">พร้อมส่งทั่วไทย</p>
+          <h1 id="heroTitle">สบายมาร์เก็ต</h1>
+          <p>
+            คัดสินค้าดูแลตัวเอง ของใช้ในบ้าน และชุดของขวัญที่เลือกง่าย
+            จ่ายสะดวก พร้อมสรุปรายการก่อนส่งคำสั่งซื้อ
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#shop">เลือกสินค้า</a>
+            <a class="secondary-link" href="#checkout">ดูตะกร้า</a>
+          </div>
+          <dl class="hero-metrics" aria-label="ข้อมูลร้าน">
+            <div>
+              <dt>24 ชม.</dt>
+              <dd>ตอบรับออเดอร์</dd>
+            </div>
+            <div>
+              <dt>฿1,200</dt>
+              <dd>ส่งฟรี</dd>
+            </div>
+            <div>
+              <dt>COD</dt>
+              <dd>ชำระปลายทาง</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="shop-layout" id="shop" aria-label="ร้านค้า">
+        <div class="catalog-column">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">สินค้าแนะนำ</p>
+              <h2>เลือกของเข้าตะกร้า</h2>
+            </div>
+            <p id="resultCount" class="result-count">0 รายการ</p>
+          </div>
+
+          <div class="toolbar" aria-label="เครื่องมือค้นหาและกรองสินค้า">
+            <label class="search-box">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="ค้นหาสินค้า"
+                autocomplete="off"
+              />
+            </label>
+
+            <div class="category-tabs" role="tablist" aria-label="หมวดสินค้า">
+              <button class="category-tab is-active" type="button" data-category="all">ทั้งหมด</button>
+              <button class="category-tab" type="button" data-category="wellness">สุขภาพ</button>
+              <button class="category-tab" type="button" data-category="beauty">ผิวกาย</button>
+              <button class="category-tab" type="button" data-category="home">บ้าน</button>
+              <button class="category-tab" type="button" data-category="gift">ของขวัญ</button>
+            </div>
+          </div>
+
+          <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        </div>
+
+        <aside class="cart-panel" id="cartPanel" aria-label="ตะกร้าสินค้า">
+          <div class="cart-header">
+            <div>
+              <p class="eyebrow">รายการสั่งซื้อ</p>
+              <h2>ตะกร้าของคุณ</h2>
+            </div>
+            <button class="icon-button close-cart" id="closeCart" type="button" aria-label="ปิดตะกร้า">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+          <div class="cart-items" id="cartItems"></div>
+
+          <form class="promo-row" id="promoForm">
+            <label for="promoCode">โค้ดส่วนลด</label>
+            <div>
+              <input id="promoCode" type="text" placeholder="WELCOME10" autocomplete="off" />
+              <button type="submit">ใช้โค้ด</button>
+            </div>
+          </form>
+
+          <div class="cart-summary" aria-label="สรุปราคา">
+            <div>
+              <span>ค่าสินค้า</span>
+              <strong id="subtotalText">฿0</strong>
+            </div>
+            <div>
+              <span>ส่วนลด</span>
+              <strong id="discountText">฿0</strong>
+            </div>
+            <div>
+              <span>ค่าส่ง</span>
+              <strong id="shippingText">฿0</strong>
+            </div>
+            <div class="total-row">
+              <span>ยอดรวม</span>
+              <strong id="totalText">฿0</strong>
+            </div>
+          </div>
+
+          <form class="checkout-form" id="checkout" aria-label="ข้อมูลจัดส่ง">
+            <h3>ข้อมูลจัดส่ง</h3>
+            <label>
+              ชื่อผู้รับ
+              <input name="customerName" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              เบอร์โทร
+              <input name="phone" type="tel" autocomplete="tel" required />
+            </label>
+            <label>
+              ที่อยู่
+              <textarea name="address" rows="3" required></textarea>
+            </label>
+            <label>
+              ช่องทางชำระเงิน
+              <select name="payment" required>
+                <option value="ชำระปลายทาง">ชำระปลายทาง</option>
+                <option value="โอนเงิน">โอนเงิน</option>
+                <option value="พร้อมเพย์">พร้อมเพย์</option>
+              </select>
+            </label>
+            <button class="checkout-button" id="checkoutButton" type="submit" disabled>
+              ส่งคำสั่งซื้อ
+            </button>
+          </form>
+        </aside>
+      </section>
+
+      <section class="service-strip" id="support" aria-label="บริการร้านค้า">
+        <div>
+          <strong>แพ็กของทุกวัน</strong>
+          <span>ตัดรอบ 15:00 น.</span>
+        </div>
+        <div>
+          <strong>ตรวจรายการก่อนส่ง</strong>
+          <span>มีสรุปคำสั่งซื้อชัดเจน</span>
+        </div>
+        <div>
+          <strong>ดูแลหลังการขาย</strong>
+          <span>เปลี่ยน/คืนตามเงื่อนไขร้าน</span>
+        </div>
+      </section>
+    </main>
+
+    <div class="cart-backdrop" id="cartBackdrop" hidden></div>
+
+    <dialog class="order-modal" id="orderModal" aria-labelledby="orderTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">คำสั่งซื้อสำเร็จ</p>
+          <h2 id="orderTitle">รับรายการแล้ว</h2>
+        </div>
+        <button class="icon-button" id="closeModal" type="button" aria-label="ปิดหน้าต่าง">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div id="orderDetails" class="order-details"></div>
+      <button class="primary-link modal-action" id="finishModal" type="button">กลับไปเลือกสินค้า</button>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
