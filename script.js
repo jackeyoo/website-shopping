@@ -1,7 +1,7 @@
 const products = [
   {
     id: "aura-watch-pro",
-    image: "https://images.pexels.com/photos/5081914/pexels-photo-5081914.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.pexels.com/photos/5081914/pexels-photo-5081914.jpeg?auto=compress&cs=tinysrgb&w=900",
     name: "Aura Watch Pro",
     category: "wearable",
     price: 5490,
@@ -15,7 +15,7 @@ const products = [
   },
   {
     id: "nova-buds-air",
-    image: "https://images.pexels.com/photos/8380433/pexels-photo-8380433.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.pexels.com/photos/8380433/pexels-photo-8380433.jpeg?auto=compress&cs=tinysrgb&w=900",
     name: "Nova Buds Air",
     category: "audio",
     price: 3290,
@@ -29,7 +29,7 @@ const products = [
   },
   {
     id: "volt-gan-100",
-    image: "https://images.pexels.com/photos/914912/pexels-photo-914912.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.pexels.com/photos/914912/pexels-photo-914912.jpeg?auto=compress&cs=tinysrgb&w=900",
     name: "Volt GaN 100W",
     category: "power",
     price: 2290,
@@ -43,7 +43,7 @@ const products = [
   },
   {
     id: "halo-desk-lamp",
-    image: "https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=900",
     name: "Halo Desk Lamp",
     category: "desk",
     price: 1890,
@@ -57,7 +57,7 @@ const products = [
   },
   {
     id: "home-hub-mini",
-    image: "https://images.pexels.com/photos/1024697/pexels-photo-1024697.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.pexels.com/photos/1024697/pexels-photo-1024697.jpeg?auto=compress&cs=tinysrgb&w=900",
     name: "Home Hub Mini",
     category: "smart-home",
     price: 2590,
@@ -71,7 +71,7 @@ const products = [
   },
   {
     id: "orbit-mouse-pro",
-    image: "https://images.pexels.com/photos/17821147/pexels-photo-17821147.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.pexels.com/photos/17821147/pexels-photo-17821147.jpeg?auto=compress&cs=tinysrgb&w=900",
     name: "Orbit Mouse Pro",
     category: "desk",
     price: 1490,
@@ -85,7 +85,7 @@ const products = [
   },
   {
     id: "lumen-keyboard",
-    image: "https://images.pexels.com/photos/671629/pexels-photo-671629.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.pexels.com/photos/671629/pexels-photo-671629.jpeg?auto=compress&cs=tinysrgb&w=900",
     name: "Lumen Keyboard",
     category: "desk",
     price: 2990,
@@ -99,7 +99,7 @@ const products = [
   },
   {
     id: "travel-dock",
-    image: "https://images.pexels.com/photos/4195404/pexels-photo-4195404.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.pexels.com/photos/4195404/pexels-photo-4195404.jpeg?auto=compress&cs=tinysrgb&w=900",
     name: "Travel Dock 7-in-1",
     category: "power",
     price: 2690,
@@ -119,7 +119,7 @@ const deals = [
     name: "Creator Desk Kit",
     price: 6290,
     oldPrice: 8370,
-    accent: "#4f7a72",
+    accent: "#2f7b73",
     badge: "Save 25%",
     itemIds: ["halo-desk-lamp", "orbit-mouse-pro", "lumen-keyboard"],
     description: "ชุดโต๊ะทำงานสำหรับพิมพ์นาน ประชุมบ่อย และจัดไฟให้พร้อมทำคอนเทนต์",
@@ -129,7 +129,7 @@ const deals = [
     name: "Travel Power Kit",
     price: 4490,
     oldPrice: 5580,
-    accent: "#2d4a7c",
+    accent: "#315f9f",
     badge: "พร้อมเดินทาง",
     itemIds: ["volt-gan-100", "travel-dock"],
     description: "ชุดชาร์จเร็วและ dock สำหรับคนพก notebook ออกไปทำงานนอกสถานที่",
@@ -139,7 +139,7 @@ const deals = [
     name: "Daily Smart Kit",
     price: 9890,
     oldPrice: 12470,
-    accent: "#ab7f3c",
+    accent: "#b3873f",
     badge: "Best Bundle",
     itemIds: ["aura-watch-pro", "nova-buds-air", "home-hub-mini"],
     description: "รวม wearable, audio และ smart home สำหรับอัปเกรดชีวิตประจำวันแบบครบชุด",
@@ -238,8 +238,8 @@ function setActiveNav() {
 
 function renderProductCard(product) {
   return `
-    <article class="product-card" data-item-card data-tilt>
-      <div class="product-art tone-${product.tone}">
+    <article class="product-card" data-item-card>
+      <div class="product-art">
         <img class="product-photo" src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" />
       </div>
       <div class="product-info">
@@ -464,7 +464,7 @@ function launchCartSpark(button) {
           opacity: 0.2,
         },
       ],
-      { duration: 560, easing: "cubic-bezier(.2,.8,.2,1)" },
+      { duration: 520, easing: "cubic-bezier(.2,.8,.2,1)" },
     )
     .finished.finally(() => spark.remove());
 }
@@ -630,146 +630,6 @@ function initReveal() {
   revealItems.forEach((item) => observer.observe(item));
 }
 
-function initTilt() {
-  const isFinePointer = window.matchMedia("(pointer: fine)").matches;
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!isFinePointer || reduceMotion) return;
-
-  let activeCard = null;
-
-  document.addEventListener("pointermove", (event) => {
-    const card = event.target.closest?.("[data-tilt]");
-
-    if (card !== activeCard) {
-      if (activeCard) {
-        activeCard.style.setProperty("--tilt-x", "0deg");
-        activeCard.style.setProperty("--tilt-y", "0deg");
-      }
-      activeCard = card || null;
-    }
-
-    if (!card) return;
-
-    const rect = card.getBoundingClientRect();
-    const px = (event.clientX - rect.left) / rect.width - 0.5;
-    const py = (event.clientY - rect.top) / rect.height - 0.5;
-    card.style.setProperty("--tilt-x", `${(py * -9).toFixed(2)}deg`);
-    card.style.setProperty("--tilt-y", `${(px * 11).toFixed(2)}deg`);
-  });
-
-  document.addEventListener("pointerleave", () => {
-    if (activeCard) {
-      activeCard.style.setProperty("--tilt-x", "0deg");
-      activeCard.style.setProperty("--tilt-y", "0deg");
-      activeCard = null;
-    }
-  }, true);
-}
-
-function initHeroParallax() {
-  const stage = document.querySelector("[data-hero-stage]");
-  if (!stage) return;
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const layers = stage.querySelectorAll("[data-depth]");
-  if (reduceMotion || !layers.length) return;
-
-  stage.addEventListener("pointermove", (event) => {
-    const rect = stage.getBoundingClientRect();
-    const px = (event.clientX - rect.left) / rect.width - 0.5;
-    const py = (event.clientY - rect.top) / rect.height - 0.5;
-
-    layers.forEach((layer) => {
-      const depth = Number(layer.dataset.depth || 0);
-      layer.style.transform = `translate3d(${(px * depth * -1).toFixed(1)}px, ${(py * depth * -1).toFixed(1)}px, 0) rotateX(${(py * depth * -0.4).toFixed(2)}deg) rotateY(${(px * depth * 0.5).toFixed(2)}deg)`;
-    });
-  });
-
-  stage.addEventListener("pointerleave", () => {
-    layers.forEach((layer) => {
-      layer.style.transform = "translate3d(0, 0, 0) rotateX(0) rotateY(0)";
-    });
-  });
-}
-
-function initOrbitStage() {
-  const stage = document.querySelector("#orbitStage");
-  const ring = document.querySelector("#orbitRing");
-  if (!stage || !ring) return;
-
-  const items = products.slice(0, 8);
-  const count = items.length;
-  const radius = stage.clientWidth < 620 ? 190 : 300;
-
-  ring.innerHTML = items
-    .map((product, index) => {
-      const angle = (360 / count) * index;
-      return `
-        <li class="orbit-item" style="--angle: ${angle}deg; --radius: ${radius}px;">
-          <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" />
-          <span class="orbit-item-name">${product.name}</span>
-          <span class="orbit-item-price">${money.format(product.price)}</span>
-        </li>
-      `;
-    })
-    .join("");
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) {
-    ring.style.animation = "none";
-    ring.style.transform = "rotateY(0deg)";
-    return;
-  }
-
-  let dragging = false;
-  let lastX = 0;
-  let rotation = 0;
-
-  const readCurrentRotation = () => {
-    const style = window.getComputedStyle(ring);
-    const matrix = style.transform;
-    if (matrix && matrix !== "none") {
-      const match = matrix.match(/matrix3d\(([^)]+)\)/);
-      if (match) {
-        const values = match[1].split(",").map(Number);
-        rotation = Math.atan2(values[8], values[0]) * (180 / Math.PI);
-      }
-    }
-  };
-
-  stage.addEventListener("pointerdown", (event) => {
-    readCurrentRotation();
-    dragging = true;
-    lastX = event.clientX;
-    ring.style.animationPlayState = "paused";
-    stage.classList.add("is-dragging");
-    stage.setPointerCapture(event.pointerId);
-  });
-
-  stage.addEventListener("pointermove", (event) => {
-    if (!dragging) return;
-    const delta = event.clientX - lastX;
-    lastX = event.clientX;
-    rotation += delta * 0.35;
-    ring.style.transform = `rotateY(${rotation}deg)`;
-  });
-
-  const endDrag = () => {
-    dragging = false;
-    stage.classList.remove("is-dragging");
-  };
-
-  stage.addEventListener("pointerup", endDrag);
-  stage.addEventListener("pointercancel", endDrag);
-
-  stage.addEventListener("mouseenter", () => {
-    if (!dragging) ring.style.animationPlayState = "paused";
-  });
-  stage.addEventListener("mouseleave", () => {
-    if (!dragging) ring.style.animationPlayState = "running";
-  });
-}
-
 setActiveNav();
 bindMobileMenu();
 bindProductControls();
@@ -781,6 +641,3 @@ renderProducts();
 renderDeals();
 rerenderCartSurfaces();
 initReveal();
-initTilt();
-initHeroParallax();
-initOrbitStage();

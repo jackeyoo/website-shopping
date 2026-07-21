@@ -12,17 +12,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Taviraj:ital,wght@0,400;0,500;0,600;0,700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body data-page="home">
+    <div class="announcement">
+      <span>ส่งฟรีเมื่อครบ ฿2,500</span>
+      <span>รับประกันศูนย์สูงสุด 12 เดือน</span>
+      <span>โค้ด WELCOME10 ลดเพิ่ม 10%</span>
+    </div>
+
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="สบายมาร์เก็ต">
         <span class="brand-mark" aria-hidden="true">SM</span>
         <span class="brand-copy">
           <strong>สบายมาร์เก็ต</strong>
-          <small>Premium Tech</small>
+          <small>Premium Tech Store</small>
         </span>
       </a>
 
@@ -55,67 +61,56 @@
     </nav>
 
     <main class="page-shell">
-      <section class="hero-scene" data-reveal data-hero-stage>
-        <img
-          class="hero-image"
-          data-depth="8"
-          src="assets/hero-products.png"
-          alt="สินค้าไลฟ์สไตล์และแกดเจ็ตจัดวางบนโต๊ะ"
-        />
-        <div class="hero-veil" aria-hidden="true"></div>
-
-        <div class="hero-float hero-float-1" data-depth="46" aria-hidden="true">
-          <img src="https://images.pexels.com/photos/5081914/pexels-photo-5081914.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" loading="lazy" />
-          <span>Aura Watch Pro</span>
-        </div>
-        <div class="hero-float hero-float-2" data-depth="65" aria-hidden="true">
-          <img src="https://images.pexels.com/photos/8380433/pexels-photo-8380433.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" loading="lazy" />
-          <span>Nova Buds Air</span>
-        </div>
-        <div class="hero-float hero-float-3" data-depth="34" aria-hidden="true">
-          <img src="https://images.pexels.com/photos/1024697/pexels-photo-1024697.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" loading="lazy" />
-          <span>Home Hub Mini</span>
-        </div>
-
-        <div class="hero-content" data-depth="14">
-          <p class="eyebrow">Premium Tech / Ready to Ship</p>
-          <h1>อัปเกรดโต๊ะทำงาน บ้าน และวันเดินทางให้ลื่นกว่าเดิม</h1>
+      <section class="hero-storefront" data-reveal>
+        <div class="hero-copy">
+          <p class="eyebrow">Curated Tech Essentials</p>
+          <h1>ร้านแกดเจ็ตที่ดูเลือกของง่าย เหมือนมีคนจัดชั้นให้แล้ว</h1>
           <p>
-            คัดแกดเจ็ตที่ใช้งานได้จริง ดีไซน์สะอาด จ่ายง่าย พร้อมสรุปออเดอร์ก่อนส่งทุกครั้ง
+            รวมอุปกรณ์ทำงาน เดินทาง และ smart home ที่คัดแล้วว่าหน้าตาดี ใช้งานจริง
+            และเช็กตะกร้าก่อน checkout ได้แบบไม่งง
           </p>
           <div class="hero-actions">
-            <a class="primary-link" href="products.html">เลือกสินค้า</a>
-            <a class="secondary-link" href="deals.html">ดูดีล bundle</a>
+            <a class="primary-link" href="products.html">ช้อปสินค้า</a>
+            <a class="secondary-link" href="deals.html">ดูชุดประหยัด</a>
           </div>
         </div>
-        <div class="hero-dashboard" data-depth="20" aria-label="สถานะร้าน">
-          <div>
-            <span>ส่งฟรี</span>
-            <strong>฿2,500+</strong>
-          </div>
-          <div>
-            <span>รับประกัน</span>
-            <strong>12 เดือน</strong>
-          </div>
-          <div>
-            <span>ตอบกลับ</span>
-            <strong>24 ชม.</strong>
-          </div>
+
+        <div class="hero-gallery" aria-label="สินค้าแนะนำ">
+          <article class="hero-product hero-product-large">
+            <img src="assets/hero-products.png" alt="ชุดสินค้าแกดเจ็ตจัดวางในสตูดิโอ" />
+            <div>
+              <span>Editor Pick</span>
+              <strong>Desk & Travel Setup</strong>
+            </div>
+          </article>
+          <article class="hero-product">
+            <img
+              src="https://images.pexels.com/photos/5081914/pexels-photo-5081914.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="นาฬิกา smart watch"
+            />
+            <div>
+              <span>Wearable</span>
+              <strong>Aura Watch Pro</strong>
+            </div>
+          </article>
+          <article class="hero-product">
+            <img
+              src="https://images.pexels.com/photos/8380433/pexels-photo-8380433.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="หูฟังไร้สาย"
+            />
+            <div>
+              <span>Audio</span>
+              <strong>Nova Buds Air</strong>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="orbit-section" aria-label="สินค้าขายดีแบบหมุน 3 มิติ" data-reveal>
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Spin The Shelf</p>
-            <h2>ลากหมุนดูสินค้าขายดีรอบร้าน</h2>
-          </div>
-          <p class="orbit-hint">ลาก หรือ วางเมาส์ค้างเพื่อหยุดหมุน</p>
-        </div>
-        <div class="orbit-stage" id="orbitStage">
-          <ul class="orbit-ring" id="orbitRing"></ul>
-          <div class="orbit-floor" aria-hidden="true"></div>
-        </div>
+      <section class="trust-row" aria-label="ความน่าเชื่อถือร้าน" data-reveal>
+        <div><strong>8</strong><span>สินค้าคัดแนะนำ</span></div>
+        <div><strong>24 ชม.</strong><span>ตอบกลับออเดอร์</span></div>
+        <div><strong>฿2,500</strong><span>ส่งฟรีทันที</span></div>
+        <div><strong>12 เดือน</strong><span>รับประกันสูงสุด</span></div>
       </section>
 
       <section class="category-band" aria-label="หมวดสินค้า" data-reveal>
@@ -141,46 +136,46 @@
         </a>
       </section>
 
-      <section class="section-split" data-reveal>
-        <div class="showcase-copy">
-          <p class="eyebrow">Store Flow</p>
-          <h2>หน้าเว็บใหม่แยกการใช้งานชัดขึ้น</h2>
-          <p>
-            หน้าแรกโชว์ภาพรวม, หน้าสินค้าเน้นค้นหาและกรอง, หน้าดีลเน้น bundle,
-            ตะกร้าแยกสำหรับตรวจรายการ และ checkout แยกเพื่อกรอกข้อมูลสั่งซื้อ
-          </p>
-        </div>
-        <div class="flow-grid" aria-label="ขั้นตอนร้านค้า">
-          <a href="products.html"><span>ค้นหา</span><strong>Products</strong></a>
-          <a href="deals.html"><span>ประหยัด</span><strong>Deals</strong></a>
-          <a href="cart.html"><span>ตรวจรายการ</span><strong>Cart</strong></a>
-          <a href="checkout.html"><span>ยืนยัน</span><strong>Checkout</strong></a>
-        </div>
-      </section>
-
       <section class="product-section" data-reveal>
         <div class="section-heading">
           <div>
             <p class="eyebrow">Featured Gear</p>
-            <h2>สินค้าที่กำลังมาแรง</h2>
+            <h2>ของที่ควรวางหน้าแรก</h2>
           </div>
-          <a class="text-link" href="products.html">ดูทั้งหมด</a>
+          <a class="text-link" href="products.html">ดูสินค้าทั้งหมด</a>
         </div>
         <div class="product-grid featured-grid" id="featuredGrid" aria-live="polite"></div>
       </section>
 
+      <section class="editorial-split" data-reveal>
+        <div class="editorial-panel">
+          <p class="eyebrow">Better Checkout Flow</p>
+          <h2>ตะกร้าและ checkout แยกหน้าแบบร้านจริง</h2>
+          <p>
+            ลูกค้าเลือกสินค้าใน catalog, ตรวจรายการใน cart, ใส่โค้ดส่วนลด
+            แล้วค่อยกรอกข้อมูลใน checkout เพื่อปิดออเดอร์
+          </p>
+        </div>
+        <div class="flow-grid" aria-label="ขั้นตอนร้านค้า">
+          <a href="products.html"><span>01</span><strong>Browse</strong><small>ค้นหาและกรองสินค้า</small></a>
+          <a href="deals.html"><span>02</span><strong>Bundle</strong><small>เลือกชุดประหยัด</small></a>
+          <a href="cart.html"><span>03</span><strong>Review</strong><small>ตรวจยอดและส่วนลด</small></a>
+          <a href="checkout.html"><span>04</span><strong>Checkout</strong><small>ยืนยันคำสั่งซื้อ</small></a>
+        </div>
+      </section>
+
       <section class="service-strip" aria-label="จุดเด่นบริการ" data-reveal>
         <div>
-          <strong>ตรวจสินค้าเป็นรอบ</strong>
-          <span>แพ็กก่อนส่งทุกวันทำการ</span>
+          <strong>ภาพสินค้าอ่านง่าย</strong>
+          <span>ใช้ product cards ที่ไม่รกและเห็นราคาเร็ว</span>
         </div>
         <div>
-          <strong>อัปเดตสต็อกทันที</strong>
-          <span>เห็นสถานะพร้อมส่งในหน้าสินค้า</span>
+          <strong>เมนูชัดกว่าเดิม</strong>
+          <span>แยกสินค้า ดีล ตะกร้า และบริการเป็นหน้าจริง</span>
         </div>
         <div>
-          <strong>ดูแลหลังซื้อ</strong>
-          <span>รับประกันและช่วยเคลมตามเงื่อนไข</span>
+          <strong>พร้อมต่อยอดระบบจริง</strong>
+          <span>โครง cart/checkout ยังเก็บ logic ไว้ครบ</span>
         </div>
       </section>
     </main>
